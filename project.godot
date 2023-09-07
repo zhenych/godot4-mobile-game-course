@@ -15,6 +15,10 @@ config/features=PackedStringArray("4.0", "Mobile")
 boot_splash/show_image=false
 config/icon="res://assets/target5.png"
 
+[autoload]
+
+Globals="*res://core/globals.gd"
+
 [display]
 
 window/size/viewport_width=720
