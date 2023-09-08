@@ -1,7 +1,8 @@
 extends CharacterBody2D
 
-var is_flying := false
-var is_flying_away := false
+enum State {IDLE, FLY_TO_TARGET, FLY_AWAY}
+
+var state := State.IDLE
 
 var speed := 4500.0
 var fly_away_speed := 1000.0
@@ -11,30 +12,31 @@ var fly_away_diviation := PI / 4.0
 
 
 func _physics_process( delta):
-	if is_flying_away:
-		global_position += fly_away_direction * fly_away_speed * delta
-		rotation += fly_away_rotation_speed * delta
-		return
-	if is_flying:
-		var collision := move_and_collide( Vector2.UP * speed * delta)
-		if collision:
-			handle_collision( collision)
+	match state:
+		State.FLY_TO_TARGET:
+			var collision := move_and_collide( Vector2.UP * speed * delta)
+			if collision:
+				handle_collision( collision)
+		State.FLY_AWAY:
+			global_position += fly_away_direction * fly_away_speed * delta
+			rotation += fly_away_rotation_speed * delta
+
+func change_state( new_state: State):
+	state = new_state
 
 func throw():
-	is_flying = true
+	change_state(State.FLY_TO_TARGET)
 	
 func throw_away( direction: Vector2):
 	var rotation_diviation = Globals.rng.randf_range(-fly_away_diviation, fly_away_diviation)
 	fly_away_direction = direction.rotated(rotation_diviation)
-	is_flying = false
-	is_flying_away = true
-	
+	change_state(State.FLY_AWAY)
 	
 func handle_collision( collision: KinematicCollision2D):
 	var collider := collision.get_collider()
 	if collider is Target:
 		add_knife_to_target( collider)
-		is_flying = false
+		change_state(State.IDLE)
 	else :
 		throw_away(collision.get_normal())
 
