@@ -47,12 +47,12 @@ layout_mode = 2
 text = "< HOME"
 flat = true
 
-[node name="PointLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="PointsLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
 size_flags_horizontal = 3
-text = "100"
+text = "0"
 
 [node name="StageCounter" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
