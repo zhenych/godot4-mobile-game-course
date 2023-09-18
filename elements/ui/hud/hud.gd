@@ -38,3 +38,10 @@ func update_hud_location( location: Events.LOCATIONS):
 			point_label.hide()
 			stage_counter.hide()
 			stage_label.hide()
+
+func update_hud_restart():
+	knives_counter.hide()
+	home_button.show()
+	point_label.hide()
+	stage_counter.hide()
+	stage_label.hide()
