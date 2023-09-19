@@ -7,6 +7,8 @@ extends Node2D
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	Events.game_over.connect(end_game)
+	# temporary function
+	Events.knives_changed.emit(Globals.knives)
 
 func end_game():
 	knife_shooter.is_enabled = false

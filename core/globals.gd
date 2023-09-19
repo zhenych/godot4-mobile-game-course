@@ -8,6 +8,7 @@ const location_to_scene = {
 
 var rng := RandomNumberGenerator.new()
 var points := 0
+var knives := 6
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -16,6 +17,10 @@ func _ready():
 	print_debug( rng.seed)
 	
 	Events.location_changed.connect( handle_location_change)
+
+func remove_knife():
+	knives -= 1
+	Events.knives_changed.emit( knives)
 	
 func add_point():
 	points += 1

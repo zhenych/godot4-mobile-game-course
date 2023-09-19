@@ -4,4 +4,5 @@ enum LOCATIONS { START, GAME, SHOP}
 
 signal game_over
 signal location_changed( location: LOCATIONS)
-signal points_changed( points:int)
+signal points_changed( points: int)
+signal knives_changed( knives: int)
