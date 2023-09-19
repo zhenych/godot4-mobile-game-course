@@ -22,12 +22,17 @@ var speed := PI
 ]
 
 func _ready():
-	add_default_items( 3, 2)
+#	add_default_items( 3, 2)
 #	await get_tree().create_timer(1).timeout
 #	explode()
+	pass
 
 func _physics_process( delta: float):
 	rotation += speed * delta
+
+func take_damage():
+	if Globals.knives == 0:
+		explode()
 	
 func explode():
 	sprite.hide()
@@ -45,6 +50,8 @@ func explode():
 	tween.parallel().tween_property( knife_particles, "modulate", Color("ffffff00"), EXPLOSION_TIME)
 	
 	tween.play()
+	await tween.finished
+	Globals.change_stage(  Globals.current_stage + 1)
 
 func add_object_with_pivot( object: Node2D, object_rotation: float):
 	var pivot := Node2D.new()
