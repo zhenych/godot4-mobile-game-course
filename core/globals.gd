@@ -14,7 +14,8 @@ var rng := RandomNumberGenerator.new()
 
 var current_stage := 1
 var points := 0
-var knives := 6
+var knives := 0
+var apples := 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -23,6 +24,10 @@ func _ready():
 	print_debug( rng.seed)
 	
 	Events.location_changed.connect( handle_location_change)
+
+func add_apples( amount:int):
+	apples += amount
+	Events.apples_changed.emit(apples)
 
 func change_stage( stage_i: int):
 	current_stage = stage_i

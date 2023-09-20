@@ -14,6 +14,7 @@ var is_hited := false
 func _on_area_2d_body_entered(body):
 	if not is_hited:
 		is_hited = true
+		Globals.add_apples( 1)
 		apple_explode()		
 
 func apple_explode():
