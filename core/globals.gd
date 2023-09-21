@@ -20,6 +20,9 @@ var points := 0
 var knives := 0
 var apples := 0
 
+var active_knife_index := 0
+var unlocked_knives := 0b000000001
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	load_game()
@@ -28,6 +31,13 @@ func _ready():
 	print_debug( rng.seed)
 	
 	Events.location_changed.connect( handle_location_change)
+
+func unlock_knife( knife_index: int):
+	unlocked_knives |= (1 << knife_index)
+
+func change_knife( knife_index: int):
+	active_knife_index = knife_index
+	Event.active_knife_index.emit( active_knife_index)
 
 func save_game():
 	var save_game_file = FileAccess.open( SAVE_GAME_FILE, FileAccess.WRITE)
