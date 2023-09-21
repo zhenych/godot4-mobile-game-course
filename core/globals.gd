@@ -35,12 +35,12 @@ func _ready():
 func unlock_knife( knife_index: int):
 	unlocked_knives |= (1 << knife_index)
 	
-func is_knife_unlocked( knife_index: int) -> bool:
+func is_knife_unlocked( knife_index: int) -> bool:  
 	return unlocked_knives & (1 << knife_index) != 0
 
 func change_knife( knife_index: int):
 	active_knife_index = knife_index
-	Events.active_knife_index.emit( active_knife_index)
+	Events.active_knife_changed.emit( active_knife_index)
 
 func save_game():
 	var save_game_file = FileAccess.open( SAVE_GAME_FILE, FileAccess.WRITE)
