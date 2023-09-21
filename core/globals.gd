@@ -6,7 +6,7 @@ const location_to_scene = {
 	Events.LOCATIONS.START: preload("res://scenes/start_screen/start_screen.tscn")
 }
 const SAVE_GAME_FILE := "user://savegame.save"
-const SAVE_VARIABLES := ["apples"]
+const SAVE_VARIABLES := ["apples", "active_knife_index", "unlocked_knives"]
 
 const MAX_STAGE_APPLES := 3
 const MAX_STAGE_KNIVES := 2
@@ -34,10 +34,13 @@ func _ready():
 
 func unlock_knife( knife_index: int):
 	unlocked_knives |= (1 << knife_index)
+	
+func is_knife_unlocked( knife_index: int) -> bool:
+	return unlocked_knives & (1 << knife_index) != 0
 
 func change_knife( knife_index: int):
 	active_knife_index = knife_index
-	Event.active_knife_index.emit( active_knife_index)
+	Events.active_knife_index.emit( active_knife_index)
 
 func save_game():
 	var save_game_file = FileAccess.open( SAVE_GAME_FILE, FileAccess.WRITE)
