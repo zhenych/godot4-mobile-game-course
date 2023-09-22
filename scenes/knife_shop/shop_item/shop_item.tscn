@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://cq0ktkd7epol"]
+[gd_scene load_steps=4 format=3 uid="uid://cq0ktkd7epol"]
 
 [ext_resource type="Texture2D" uid="uid://bu3qa4uimyddu" path="res://assets/locked.png" id="1_kcptv"]
+[ext_resource type="Script" path="res://scenes/knife_shop/shop_item/shop_item.gd" id="1_vnbwo"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_liudb"]
 
@@ -10,6 +11,7 @@ offset_bottom = 40.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxEmpty_liudb")
+script = ExtResource("1_vnbwo")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 2
@@ -28,3 +30,9 @@ layout_mode = 2
 texture = ExtResource("1_kcptv")
 expand_mode = 1
 stretch_mode = 5
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 2
+flat = true
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

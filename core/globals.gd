@@ -1,5 +1,17 @@
 extends Node
 
+const KNIFE_TEXTURES := [
+	preload("res://assets/knife1.png"),
+	preload("res://assets/knife2.png"),
+	preload("res://assets/knife3.png"),
+	preload("res://assets/knife4.png"),
+	preload("res://assets/knife5.png"),
+	preload("res://assets/knife6.png"),
+	preload("res://assets/knife7.png"),
+	preload("res://assets/knife8.png"),
+	preload("res://assets/knife9.png"),
+]
+
 const location_to_scene = {
 	Events.LOCATIONS.GAME: preload("res://scenes/game/game.tscn"),
 	Events.LOCATIONS.SHOP: preload("res://scenes/knife_shop/knife_shop.tscn"),
@@ -8,6 +20,7 @@ const location_to_scene = {
 const SAVE_GAME_FILE := "user://savegame.save"
 const SAVE_VARIABLES := ["apples", "active_knife_index", "unlocked_knives"]
 
+const UNLOCK_COST := 1
 const MAX_STAGE_APPLES := 3
 const MAX_STAGE_KNIVES := 2
 const MIN_KNIVES := 5
@@ -21,22 +34,33 @@ var knives := 0
 var apples := 0
 
 var active_knife_index := 0
-var unlocked_knives := 0b000000001
+var unlocked_knives := 0b011000001 :
+	get: 
+#		printerr("Get {0}".format([unlocked_knives]))
+		return unlocked_knives
+	set(aaa):
+#		printerr("Set {0}".format([aaa]))
+		unlocked_knives = aaa
+		pass	
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	load_game()
 	rng.randomize()
 #	rng.seed = -2364680567785300547
+	seed(rng.seed)
 	print_debug( rng.seed)
 	
 	Events.location_changed.connect( handle_location_change)
 
 func unlock_knife( knife_index: int):
-	unlocked_knives |= (1 << knife_index)
+	var mask = (1 << knife_index)
+	unlocked_knives |= mask
+	pass
 	
-func is_knife_unlocked( knife_index: int) -> bool:  
-	return unlocked_knives & (1 << knife_index) != 0
+func is_knife_unlocked( knife_index: int) -> bool:
+	var ret_value := unlocked_knives & (1 << knife_index) != 0
+	return ret_value
 
 func change_knife( knife_index: int):
 	active_knife_index = knife_index
