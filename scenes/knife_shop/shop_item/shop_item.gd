@@ -32,7 +32,7 @@ func unlock():
 func update_knife_status( active_knife_idx: int):
 	if knife_index == active_knife_idx:
 		change_state(State.ACTIVE)
-	elif Globals.is_knife_unlocked(active_knife_idx):
+	elif Globals.is_knife_unlocked(knife_index):
 		change_state(State.OPENED)
 
 
@@ -41,4 +41,4 @@ func _on_button_pressed():
 		return
 		
 	Globals.change_knife(knife_index)
-		
+	Globals.save_game()

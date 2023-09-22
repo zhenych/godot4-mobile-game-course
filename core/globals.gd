@@ -20,7 +20,7 @@ const location_to_scene = {
 const SAVE_GAME_FILE := "user://savegame.save"
 const SAVE_VARIABLES := ["apples", "active_knife_index", "unlocked_knives"]
 
-const UNLOCK_COST := 1
+const UNLOCK_COST := 250
 const MAX_STAGE_APPLES := 3
 const MAX_STAGE_KNIVES := 2
 const MIN_KNIVES := 5
@@ -34,7 +34,7 @@ var knives := 0
 var apples := 0
 
 var active_knife_index := 0
-var unlocked_knives := 0b011000001 :
+var unlocked_knives := 0b000000001 :
 	get: 
 #		printerr("Get {0}".format([unlocked_knives]))
 		return unlocked_knives

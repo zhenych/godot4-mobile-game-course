@@ -10,6 +10,10 @@ var fly_away_rotation_speed := 1500.0
 var fly_away_direction := Vector2.DOWN
 var fly_away_diviation := PI / 4.0
 
+@onready var knife_texture := $Sprite2D
+
+func _ready():
+	knife_texture.texture = Globals.KNIFE_TEXTURES[ Globals.active_knife_index]
 
 func _physics_process( delta):
 	match state:

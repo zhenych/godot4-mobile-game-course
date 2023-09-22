@@ -25,6 +25,7 @@ func _ready():
 #	add_default_items( 3, 2)
 #	await get_tree().create_timer(1).timeout
 #	explode()
+	knife_particles.texture = Globals.KNIFE_TEXTURES[ Globals.active_knife_index]
 	pass
 
 func _physics_process( delta: float):

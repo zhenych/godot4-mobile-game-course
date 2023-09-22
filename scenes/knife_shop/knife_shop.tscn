@@ -48,7 +48,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/separator = ExtResource("2_6s1h1")
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer"]
+[node name="ActiveKnifeTexture" type="TextureRect" parent="MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 220)
 layout_mode = 2
 texture = ExtResource("3_ev606")
