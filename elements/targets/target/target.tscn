@@ -1,22 +1,22 @@
 [gd_scene load_steps=8 format=3 uid="uid://djuptvkn6gofe"]
 
-[ext_resource type="Texture2D" uid="uid://cy61tdinvfpay" path="res://assets/target1.png" id="1_1seq2"]
-[ext_resource type="Script" path="res://elements/tagets/taget/taget.gd" id="1_q6e12"]
-[ext_resource type="Texture2D" uid="uid://cso6wdxm7tlg8" path="res://assets/knife1.png" id="3_j3ee4"]
-[ext_resource type="Texture2D" uid="uid://c3pqjrpygg8f0" path="res://assets/target1_1.png" id="4_cbsk2"]
-[ext_resource type="Texture2D" uid="uid://dpv4pch7wmw7d" path="res://assets/target1_2.png" id="5_6488t"]
-[ext_resource type="Texture2D" uid="uid://djf4vlqrns7hj" path="res://assets/target1_3.png" id="6_xpa1k"]
+[ext_resource type="Script" path="res://elements/targets/target/target.gd" id="1_43sre"]
+[ext_resource type="Texture2D" uid="uid://cy61tdinvfpay" path="res://assets/target1.png" id="2_67rbm"]
+[ext_resource type="Texture2D" uid="uid://c3pqjrpygg8f0" path="res://assets/target1_1.png" id="3_f1eok"]
+[ext_resource type="Texture2D" uid="uid://dpv4pch7wmw7d" path="res://assets/target1_2.png" id="4_3wbh3"]
+[ext_resource type="Texture2D" uid="uid://djf4vlqrns7hj" path="res://assets/target1_3.png" id="5_eo2il"]
+[ext_resource type="Texture2D" uid="uid://cso6wdxm7tlg8" path="res://assets/knife1.png" id="6_57l51"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qc5e2"]
 radius = 140.0
 
-[node name="Taget" type="CharacterBody2D"]
+[node name="Target" type="CharacterBody2D"]
 collision_layer = 4
 collision_mask = 2
-script = ExtResource("1_q6e12")
+script = ExtResource("1_43sre")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_1seq2")
+texture = ExtResource("2_67rbm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_qc5e2")
@@ -29,7 +29,7 @@ emitting = false
 amount = 1
 lifetime = 2.0
 one_shot = true
-texture = ExtResource("4_cbsk2")
+texture = ExtResource("3_f1eok")
 direction = Vector2(0, -1)
 spread = 180.0
 gravity = Vector2(0, 400)
@@ -43,7 +43,7 @@ emitting = false
 amount = 1
 lifetime = 2.0
 one_shot = true
-texture = ExtResource("5_6488t")
+texture = ExtResource("4_3wbh3")
 direction = Vector2(0, -1)
 spread = 180.0
 gravity = Vector2(0, 400)
@@ -57,7 +57,7 @@ emitting = false
 amount = 1
 lifetime = 2.0
 one_shot = true
-texture = ExtResource("6_xpa1k")
+texture = ExtResource("5_eo2il")
 direction = Vector2(0, -1)
 spread = 180.0
 gravity = Vector2(0, 400)
@@ -73,7 +73,7 @@ lifetime = 2.0
 one_shot = true
 preprocess = 0.1
 explosiveness = 1.0
-texture = ExtResource("3_j3ee4")
+texture = ExtResource("6_57l51")
 direction = Vector2(0, -1)
 spread = 80.0
 gravity = Vector2(0, 600)

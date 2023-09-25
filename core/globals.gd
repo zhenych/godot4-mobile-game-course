@@ -73,9 +73,9 @@ func save_game():
 		return
 	var game_data := {}
 	for variable in SAVE_VARIABLES:
-		game_data[variable] = get(variable)
+		game_data[variable] = get( variable)
 	var json_object = JSON.new()
-	save_game_file.store_line(json_object.stringify(game_data))
+	save_game_file.store_line( json_object.stringify( game_data))
 	
 func load_game():
 	if not FileAccess.file_exists(SAVE_GAME_FILE):

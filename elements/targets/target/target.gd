@@ -29,6 +29,9 @@ func _ready():
 	pass
 
 func _physics_process( delta: float):
+	move( delta)
+
+func move( delta: float):
 	rotation += speed * delta
 
 func take_damage():
@@ -42,9 +45,9 @@ func explode():
 	var tween := create_tween()
 	
 	for _item in particles_target_parts:
-		var particle_taget_part: CPUParticles2D = _item
-		tween.parallel().tween_property( particle_taget_part, "modulate", Color("ffffff00"), EXPLOSION_TIME)
-		particle_taget_part.emitting = true
+		var particle_target_part: CPUParticles2D = _item
+		tween.parallel().tween_property( particle_target_part, "modulate", Color("ffffff00"), EXPLOSION_TIME)
+		particle_target_part.emitting = true
 		
 	knife_particles.rotation = -rotation
 	knife_particles.emitting = true
