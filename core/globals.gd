@@ -17,6 +17,12 @@ const TAGETS := [
 	preload("res://elements/targets/target_accelerate/target_accelerate.tscn")
 ]
 
+const BOSSES := [
+	preload("res://elements/targets/target_boss_cheese/target_boss_cheese.tscn")
+]
+
+const BOSS_LEVEL := 5
+
 const location_to_scene = {
 	Events.LOCATIONS.GAME: preload("res://scenes/game/game.tscn"),
 	Events.LOCATIONS.SHOP: preload("res://scenes/knife_shop/knife_shop.tscn"),
@@ -105,7 +111,11 @@ func add_apples( amount:int):
 
 func change_stage( stage_i: int):
 	current_stage = stage_i
-	var stage = Stage.new() if current_stage == 1 else get_random_stage()
+	var stage: Stage
+	if current_stage % BOSS_LEVEL == 0:
+		stage = Stage.new(BOSSES.pick_random())
+	else:
+		stage = Stage.new() if current_stage == 1 else get_random_stage()
 	knives = rng.randi_range( MIN_KNIVES, MAX_KNIVES)
 	Events.knives_changed.emit( knives)
 	Events.stage_changed.emit( stage)
