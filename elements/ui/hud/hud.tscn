@@ -1,9 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://dh4m5xxt2ntlq"]
+[gd_scene load_steps=6 format=3 uid="uid://dh4m5xxt2ntlq"]
 
 [ext_resource type="Script" path="res://elements/ui/hud/hud.gd" id="1_j4x6l"]
 [ext_resource type="Texture2D" uid="uid://cxc0eg6ywmqi5" path="res://assets/background.png" id="1_llh4d"]
-[ext_resource type="Texture2D" uid="uid://c8avdj5qs1klg" path="res://assets/circle_1.png" id="2_hnhlh"]
-[ext_resource type="Texture2D" uid="uid://fj11q3al6t66" path="res://assets/boss_ico.png" id="3_3qc6l"]
+[ext_resource type="PackedScene" uid="uid://cwvrwrhh2ahrv" path="res://elements/ui/hud/stage_counter/stage_counter.tscn" id="3_e5grn"]
 [ext_resource type="Texture2D" uid="uid://dfoxeyqgynyxa" path="res://assets/apple_ico.png" id="4_ukn4n"]
 [ext_resource type="PackedScene" uid="uid://bbi32fm28qjr2" path="res://elements/ui/hud/knives_counter.tscn" id="6_vl6l0"]
 
@@ -54,37 +53,9 @@ layout_mode = 2
 size_flags_horizontal = 3
 text = "0"
 
-[node name="StageCounter" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="StageCounter" parent="MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("3_e5grn")]
 unique_name_in_owner = true
-visible = false
 layout_mode = 2
-size_flags_horizontal = 3
-alignment = 1
-
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer/StageCounter"]
-layout_mode = 2
-texture = ExtResource("2_hnhlh")
-stretch_mode = 5
-
-[node name="TextureRect2" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer/StageCounter"]
-layout_mode = 2
-texture = ExtResource("2_hnhlh")
-stretch_mode = 5
-
-[node name="TextureRect3" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer/StageCounter"]
-layout_mode = 2
-texture = ExtResource("2_hnhlh")
-stretch_mode = 5
-
-[node name="TextureRect4" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer/StageCounter"]
-layout_mode = 2
-texture = ExtResource("2_hnhlh")
-stretch_mode = 5
-
-[node name="TextureRect5" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer/StageCounter"]
-layout_mode = 2
-texture = ExtResource("3_3qc6l")
-stretch_mode = 5
 
 [node name="ApplesCounter" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
@@ -107,7 +78,7 @@ stretch_mode = 2
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
-text = "STAGE 10"
+text = "STAGE 1"
 horizontal_alignment = 1
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]

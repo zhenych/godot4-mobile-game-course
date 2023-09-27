@@ -11,12 +11,16 @@ func _ready():
 	Events.location_changed.connect( update_hud_location)
 	Events.points_changed.connect( update_points)
 	Events.apples_changed.connect(update_apples)
+	Events.stage_changed.connect(update_stage_lable)
 	update_apples(Globals.apples)
 	update_hud_location( Events.LOCATIONS.START)
 #	print_debug( "Hud init")
 
 func _on_home_button_pressed():
 	Events.location_changed.emit( Events.LOCATIONS.START)
+
+func update_stage_lable( stage:Stage):
+	stage_label.text = "STAGE {0}".format([Globals.current_stage])
 	
 func update_apples( apples: int):
 	apple_counter.text = str(apples)
